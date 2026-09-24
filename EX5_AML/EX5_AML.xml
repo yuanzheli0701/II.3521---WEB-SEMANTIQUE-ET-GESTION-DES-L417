@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<courses>
+
+    <!-- DSA201 -->
+    <course code="DSA201" credits="4">
+
+        <title>Data Structures and Algorithms</title>
+
+        <description>
+            This course introduces the basic concepts of data structures
+            and algorithms, including arrays, lists, stacks, queues and sorting.
+        </description>
+
+        <professor>Mr. Martin</professor>
+
+        <topic>Data Structures</topic>
+        <topic>Algorithms</topic>
+        <topic>Sorting</topic>
+
+        <textbook isbn="9780262046305">
+            <title>Introduction to Algorithms</title>
+            <author>Thomas H. Cormen</author>
+        </textbook>
+
+    </course>
+
+
+    <!-- DB202 -->
+    <course code="DB202" credits="3">
+
+        <title>Database Management</title>
+
+        <description>
+            This course covers relational databases, SQL, database design
+            and basic database management concepts.
+        </description>
+
+        <professor>Prof. Bernard</professor>
+
+        <topic>Relational Databases</topic>
+        <topic>SQL</topic>
+        <topic>Database Design</topic>
+
+        <textbook isbn="9780133970777">
+            <title>Database System Concepts</title>
+            <author>Abraham Silberschatz</author>
+        </textbook>
+
+    </course>
+
+
+    <!-- ML301 -->
+    <course code="ML301" credits="5">
+
+        <title>Machine Learning</title>
+
+        <description>
+            This course introduces machine learning concepts, including
+            supervised learning, unsupervised learning and model evaluation.
+        </description>
+
+        <professor>Dr. Thomas</professor>
+
+        <topic>Supervised Learning</topic>
+        <topic>Unsupervised Learning</topic>
+        <topic>Model Evaluation</topic>
+
+        <prerequisites>
+            <course>DSA201</course>
+        </prerequisites>
+
+        <textbook isbn="9780262035613">
+            <title>Pattern Recognition and Machine Learning</title>
+            <author>Christopher M. Bishop</author>
+        </textbook>
+
+    </course>
+
+
+    <!-- BD302 -->
+    <course code="BD302" credits="4">
+
+        <title>Big Data Technologies</title>
+
+        <description>
+            This course focuses on big data processing, distributed systems,
+            data pipelines and technologies such as Hadoop and Spark.
+        </description>
+
+        <professor>Prof. Dupont</professor>
+
+        <topic>Big Data</topic>
+        <topic>Hadoop</topic>
+        <topic>Spark</topic>
+        <topic>Distributed Systems</topic>
+
+        <prerequisites>
+            <course>DSA201</course>
+            <course>DB202</course>
+        </prerequisites>
+
+        <textbook isbn="9781491901427">
+            <title>Hadoop: The Definitive Guide</title>
+            <author>Tom White</author>
+        </textbook>
+
+    </course>
+
+
+    <!-- WEB301 -->
+    <course code="WEB301" credits="3">
+
+        <title>Web Technologies</title>
+
+        <description>
+            Basics of modern web applications.
+        </description>
+
+        <professor>Prof. Tim Berners-Lee</professor>
+
+        <topic>HTML</topic>
+        <topic>CSS</topic>
+        <topic>Web Applications</topic>
+
+        <textbook isbn="9781118008188">
+            <title>Learning Web Design</title>
+            <author>Jennifer Niederst Robbins</author>
+        </textbook>
+
+    </course>
+
+
+    <!-- SWKM701 -->
+    <course code="SWKM701" credits="3">
+
+        <title>Semantic Web and Knowledge Management</title>
+
+        <description>
+            Covers RDF, SPARQL, and Knowledge Graphs.
+        </description>
+
+        <professor>Dr. Emily Chen</professor>
+
+        <topic>Semantic Web</topic>
+        <topic>RDF</topic>
+        <topic>SPARQL</topic>
+        <topic>Knowledge Graphs</topic>
+
+        <prerequisites>
+            <course>DSA201</course>
+            <course>WEB301</course>
+        </prerequisites>
+
+        <textbook isbn="9780262018289">
+            <title>Semantic Web for the Working Ontologist</title>
+            <author>Dean Allemang</author>
+        </textbook>
+
+    </course>
+
+</courses>
