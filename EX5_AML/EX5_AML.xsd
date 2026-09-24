@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:complexType name="textbookType">
+
+        <xs:sequence>
+
+            <xs:element
+                name="title"
+                type="xs:string"/>
+
+            <xs:element
+                name="author"
+                type="xs:string"/>
+
+        </xs:sequence>
+
+        <xs:attribute
+            name="isbn"
+            type="xs:string"
+            use="required"/>
+
+    </xs:complexType>
+
+    <xs:complexType name="courseType">
+
+        <xs:sequence>
+
+            <!-- Course title -->
+            <xs:element
+                name="title"
+                type="xs:string"/>
+
+            <!-- Course description -->
+            <xs:element
+                name="description"
+                type="xs:string"/>
+
+            <!-- Professor -->
+            <xs:element
+                name="professor"
+                type="xs:string"/>
+
+            <!-- One or more topics -->
+            <xs:element
+                name="topic"
+                type="xs:string"
+                minOccurs="1"
+                maxOccurs="unbounded"/>
+
+            <!-- Zero or one prerequisites section -->
+            <xs:element
+                name="prerequisites"
+                minOccurs="0"
+                maxOccurs="1">
+
+                <xs:complexType>
+
+                    <xs:sequence>
+
+                        <!-- Zero or more prerequisite courses -->
+                        <xs:element
+                            name="course"
+                            type="xs:string"
+                            minOccurs="0"
+                            maxOccurs="unbounded"/>
+
+                    </xs:sequence>
+
+                </xs:complexType>
+
+            </xs:element>
+
+            <!-- One textbook -->
+            <xs:element
+                name="textbook"
+                type="textbookType"
+                minOccurs="1"
+                maxOccurs="1"/>
+
+        </xs:sequence>
+
+
+        <!-- Course code -->
+        <xs:attribute
+            name="code"
+            type="xs:ID"
+            use="required"/>
+
+        <!-- Number of credits -->
+        <xs:attribute
+            name="credits"
+            type="xs:integer"
+            use="required"/>
+
+    </xs:complexType>
+
+    <xs:element name="courses">
+
+        <xs:complexType>
+
+            <xs:sequence>
+
+                <xs:element
+                    name="course"
+                    type="courseType"
+                    minOccurs="1"
+                    maxOccurs="unbounded"/>
+
+            </xs:sequence>
+
+        </xs:complexType>
+
+        <xs:key name="courseKey">
+
+            <!-- Select every course -->
+            <xs:selector xpath="course"/>
+
+            <!-- Use course code as the unique key -->
+            <xs:field xpath="@code"/>
+
+        </xs:key>
+
+        <xs:keyref
+            name="prerequisiteReference"
+            refer="courseKey">
+
+            <!-- Select every prerequisite course -->
+            <xs:selector
+                xpath="course/prerequisites/course"/>
+
+            <!-- The text value must match an existing course code -->
+            <xs:field xpath="."/>
+
+        </xs:keyref>
+
+    </xs:element>
+
+</xs:schema>
