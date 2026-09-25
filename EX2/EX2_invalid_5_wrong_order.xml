@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<courses>
+
+    <course code="DSA201" credits="4">
+        <professor>Mr. Martin</professor>
+        <title>Data Structures and Algorithms</title>
+        <description>Arrays, lists, stacks, queues and sorting.</description>
+    </course>
+
+</courses>

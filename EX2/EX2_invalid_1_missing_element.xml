@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<courses>
+
+    <course code="DSA201" credits="4">
+        <title>Data Structures and Algorithms</title>
+        <professor>Mr. Martin</professor>
+    </course>
+
+    <course code="DB202" credits="3">
+        <title>Database Management</title>
+        <description>Relational databases, SQL and database design.</description>
+        <professor>Prof. Bernard</professor>
+    </course>
+
+</courses>
