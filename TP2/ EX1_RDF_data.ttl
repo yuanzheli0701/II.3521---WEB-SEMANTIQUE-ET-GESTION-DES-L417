@@ -1,0 +1,21 @@
+@prefix s2a: <http://example.org/s2a/> .
+@prefix uni: <http://example.org/university/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+uni:DSA201 rdf:type s2a:Course .
+uni:WEB301 rdf:type s2a:Course .
+uni:SWKM701 rdf:type s2a:Course .
+
+uni:DrSmith rdf:type s2a:Professor .
+uni:DrSmith s2a:teaches uni:DSA201 .
+
+uni:DSA201 s2a:hasCreditValue 4 .
+uni:DSA201 s2a:hasTitle "Data Structures and Algorithms" .
+
+uni:Alice rdf:type s2a:Student .
+uni:Bob rdf:type s2a:Student .
+uni:Alice s2a:hasPassed uni:DSA201 .
+uni:Bob s2a:enrolledIn uni:DSA201 .
+
+uni:SWKM701 s2a:hasPrerequisite uni:DSA201 .
+uni:SWKM701 s2a:hasPrerequisite uni:WEB301 .
