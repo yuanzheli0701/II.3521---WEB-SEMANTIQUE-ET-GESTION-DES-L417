@@ -1,0 +1,45 @@
+@prefix s2a: <http://example.org/s2a/> .
+@prefix uni: <http://example.org/university/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+s2a:Course rdf:type rdfs:Class .
+s2a:Student rdf:type rdfs:Class .
+s2a:Professor rdf:type rdfs:Class .
+s2a:AcademicProgram rdf:type rdfs:Class .
+s2a:ProgramRequirement rdf:type rdfs:Class .
+
+s2a:GraduateProgram rdfs:subClassOf s2a:AcademicProgram .
+s2a:MasterOfScience rdfs:subClassOf s2a:GraduateProgram .
+
+s2a:teaches rdf:type rdf:Property ;
+    rdfs:domain s2a:Professor ;
+    rdfs:range s2a:Course .
+
+s2a:isEnrolledIn rdf:type rdf:Property ;
+    rdfs:domain s2a:Student ;
+    rdfs:range s2a:Course .
+
+s2a:hasPassedCourse rdf:type rdf:Property ;
+    rdfs:domain s2a:Student ;
+    rdfs:range s2a:Course .
+
+s2a:hasPrerequisite rdf:type rdf:Property ;
+    rdfs:domain s2a:Course ;
+    rdfs:range s2a:Course .
+
+s2a:isRequirementFor rdf:type rdf:Property ;
+    rdfs:domain s2a:Course ;
+    rdfs:range s2a:AcademicProgram .
+
+s2a:isPartOfProgram rdf:type rdf:Property ;
+    rdfs:domain s2a:Student ;
+    rdfs:range s2a:AcademicProgram .
+
+uni:Alice rdf:type s2a:Student ;
+    s2a:isPartOfProgram s2a:MasterOfScience ;
+    s2a:hasPassedCourse uni:DSA201 .
+
+uni:SWKM701 rdf:type s2a:Course ;
+    s2a:hasPrerequisite uni:DSA201 ;
+    s2a:isRequirementFor s2a:MasterOfScience .
