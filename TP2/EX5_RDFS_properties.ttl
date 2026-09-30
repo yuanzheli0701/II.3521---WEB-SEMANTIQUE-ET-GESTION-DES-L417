@@ -1,0 +1,18 @@
+@prefix s2a: <http://example.org/s2a/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+s2a:teaches
+    rdfs:domain s2a:Professor ;
+    rdfs:range s2a:Course .
+
+s2a:isEnrolledIn
+    rdfs:domain s2a:Student ;
+    rdfs:range s2a:Course .
+
+s2a:hasPassedCourse
+    rdfs:domain s2a:Student ;
+    rdfs:range s2a:Course .
+
+s2a:hasPrerequisite
+    rdfs:domain s2a:Course ;
+    rdfs:range s2a:Course .
