@@ -1,0 +1,26 @@
+@prefix s2a: <http://example.org/s2a/> .
+@prefix uni: <http://example.org/university/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+# Existing data - corrected
+
+uni:Math201 a s2a:Course ;
+            s2a:hasTitle "Linear Algebra" ;
+            s2a:hasCreditValue 3 .
+
+uni:DrJones a s2a:Professor ;
+            s2a:teaches uni:Math201 .
+
+uni:Charlie a s2a:Student ;
+            s2a:isEnrolledIn uni:Math201 .
+
+# New data
+
+uni:DrEvans a s2a:Professor ;
+            s2a:teaches uni:MachineLearning .
+
+uni:MachineLearning a s2a:Course ;
+                    s2a:hasCreditValue 4 .
+
+uni:David a s2a:Student ;
+          s2a:isEnrolledIn uni:MachineLearning .
