@@ -1,0 +1,18 @@
+@prefix s2a: <http://example.org/s2a/> .
+@prefix uni: <http://example.org/university/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+uni:SWKM701
+    rdf:type s2a:Course ;
+    s2a:hasPrerequisite uni:DSA201 ;
+    s2a:hasPrerequisite uni:WEB301 .
+
+uni:DSA201
+    rdf:type s2a:Course .
+
+uni:WEB301
+    rdf:type s2a:Course .
+
+uni:Alice
+    rdf:type s2a:Student ;
+    s2a:hasPassedCourse uni:DSA201 .
