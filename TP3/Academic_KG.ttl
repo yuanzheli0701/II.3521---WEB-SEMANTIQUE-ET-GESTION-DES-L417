@@ -1,0 +1,60 @@
+@prefix ex: <http://example.org/academic/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Professors
+ex:P01 a ex:Professor ;
+    ex:hasName "Anna Mueller" ;
+    ex:teaches ex:CS301 .
+
+ex:P02 a ex:Professor ;
+    ex:hasName "Wei Zhang" ;
+    ex:teaches ex:CS401 .
+
+ex:P03 a ex:Professor ;
+    ex:hasName "David Martin" ;
+    ex:teaches ex:CS305 .
+
+# Courses
+ex:CS301 a ex:Course ;
+    ex:hasTitle "Introduction to Machine Learning" ;
+    ex:hasCreditValue "4"^^xsd:integer ;
+    ex:isTaughtBy ex:P01 ;
+    ex:isPartOf ex:MasterDataScience ;
+    ex:hasPrerequisite ex:S02 ;
+    ex:developsSkill ex:S01, ex:S02, ex:S03 .
+
+ex:CS401 a ex:Course ;
+    ex:hasTitle "Advanced Machine Learning" ;
+    ex:hasCreditValue "4"^^xsd:integer ;
+    ex:isTaughtBy ex:P02 ;
+    ex:hasPrerequisite ex:CS301 ;
+    ex:developsSkill ex:S01, ex:S04 .
+
+ex:CS305 a ex:Course ;
+    ex:hasTitle "Data Management" ;
+    ex:hasCreditValue "3"^^xsd:integer ;
+    ex:isTaughtBy ex:P03 ;
+    ex:developsSkill ex:S02 .
+
+# Skills
+ex:S01 a ex:Skill ;
+    ex:hasName "Machine Learning" .
+
+ex:S02 a ex:Skill ;
+    ex:hasName "Python Programming" .
+
+ex:S03 a ex:Skill ;
+    ex:hasName "Statistics" .
+
+ex:S04 a ex:Skill ;
+    ex:hasName "Deep Learning" .
+
+# Academic Program
+ex:MasterDataScience a ex:Program ;
+    ex:hasTitle "Master of Data Science" .
+
+# Career Path
+ex:DataScientist a ex:CareerPath ;
+    ex:hasTitle "Data Scientist" ;
+    ex:requiresSkill ex:S01, ex:S02, ex:S03 .
