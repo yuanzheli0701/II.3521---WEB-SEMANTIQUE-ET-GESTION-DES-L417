@@ -1,0 +1,109 @@
+# =============================================================================
+# TDTPSP_3 - Triplification and SPARQL
+# Exercise 2 - From a Relational Database to RDF
+# Group BFM - Group 12
+#
+# RDF (Turtle) representation of the academic relational database
+# (tables: Course, Professor, Skill, CourseSkill, Prerequisite).
+#
+# Mapping used (Exercise 2, Task 1):
+#   Table         RDF class      Resource URI   Properties
+#   -------------------------------------------------------------------------
+#   Course        ex:Course      ex:<code>      ex:hasTitle, ex:hasCreditValue,
+#                                                ex:isTaughtBy (FK professor)
+#   Professor     ex:Professor   ex:<id>        ex:name
+#   Skill         ex:Skill       ex:<id>        ex:name
+#   CourseSkill   (relationship) -              ex:developsSkill   (Course -> Skill)
+#   Prerequisite  (relationship) -              ex:hasPrerequisite (Course -> Course)
+#
+#   * Every primary key becomes the local name of a unique resource URI.
+#   * Every foreign-key column becomes a link (RDF property) whose object is
+#     the URI of the referenced row.
+#   * CourseSkill and Prerequisite carry no attributes of their own: each row
+#     maps 1:1 to a single triple, so no intermediate resource is needed.
+#
+# The database rows are repeated as comments above each group of triples so
+# that the mapping can be checked line by line.
+# =============================================================================
+
+@prefix ex:  <http://example.org/academic/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# -----------------------------------------------------------------------------
+# Professor table
+#   P01  Anna Mueller
+#   P02  Wei Zhang
+#   P03  David Martin
+# -----------------------------------------------------------------------------
+
+ex:P01 a ex:Professor ;
+    ex:name "Anna Mueller" .
+
+ex:P02 a ex:Professor ;
+    ex:name "Wei Zhang" .
+
+ex:P03 a ex:Professor ;
+    ex:name "David Martin" .
+
+# -----------------------------------------------------------------------------
+# Course table (foreign key "professor" -> ex:isTaughtBy)
+#   CS301  Introduction to Machine Learning  4  P01
+#   CS401  Advanced Machine Learning         4  P02
+#   CS305  Data Management                   3  P03
+# -----------------------------------------------------------------------------
+
+ex:CS301 a ex:Course ;
+    ex:hasTitle "Introduction to Machine Learning" ;
+    ex:hasCreditValue 4 ;
+    ex:isTaughtBy ex:P01 .
+
+ex:CS401 a ex:Course ;
+    ex:hasTitle "Advanced Machine Learning" ;
+    ex:hasCreditValue 4 ;
+    ex:isTaughtBy ex:P02 .
+
+ex:CS305 a ex:Course ;
+    ex:hasTitle "Data Management" ;
+    ex:hasCreditValue 3 ;
+    ex:isTaughtBy ex:P03 .
+
+# -----------------------------------------------------------------------------
+# Skill table
+#   S01  Machine Learning
+#   S02  Python Programming
+#   S03  Statistics
+#   S04  Deep Learning
+# -----------------------------------------------------------------------------
+
+ex:S01 a ex:Skill ;
+    ex:name "Machine Learning" .
+
+ex:S02 a ex:Skill ;
+    ex:name "Python Programming" .
+
+ex:S03 a ex:Skill ;
+    ex:name "Statistics" .
+
+ex:S04 a ex:Skill ;
+    ex:name "Deep Learning" .
+
+# -----------------------------------------------------------------------------
+# CourseSkill table -> ex:developsSkill (one triple per row: Course -> Skill)
+#   CS301  S01     CS301  S02     CS301  S03
+#   CS401  S01     CS401  S04
+#   CS305  S02
+# -----------------------------------------------------------------------------
+
+ex:CS301 ex:developsSkill ex:S01, ex:S02, ex:S03 .
+
+ex:CS401 ex:developsSkill ex:S01, ex:S04 .
+
+ex:CS305 ex:developsSkill ex:S02 .
+
+# -----------------------------------------------------------------------------
+# Prerequisite table -> ex:hasPrerequisite (one triple per row: Course -> Course)
+#   CS401  CS301
+# -----------------------------------------------------------------------------
+
+ex:CS401 ex:hasPrerequisite ex:CS301 .
