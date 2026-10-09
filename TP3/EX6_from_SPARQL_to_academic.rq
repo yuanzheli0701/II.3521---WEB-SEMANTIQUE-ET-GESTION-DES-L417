@@ -1,0 +1,112 @@
+
+PREFIX ex: <http://example.org/academic/>
+
+
+############################################################
+# TASK 1
+# Retrieve the Data Scientist career, required skills,
+# and courses that develop those skills.
+############################################################
+
+SELECT ?career ?careerTitle ?skill ?skillName
+       ?course ?courseTitle
+WHERE {
+    ?career a ex:CareerPath ;
+            ex:hasTitle ?careerTitle ;
+            ex:requiresSkill ?skill .
+
+    FILTER (?careerTitle = "Data Scientist")
+
+    ?skill ex:hasName ?skillName .
+
+    ?course ex:developsSkill ?skill ;
+            ex:hasTitle ?courseTitle .
+}
+ORDER BY ?skillName ?courseTitle
+
+
+############################################################
+# TASK 2
+# Display results as Course | Skill | Career
+############################################################
+
+SELECT ?courseTitle ?skillName ?careerTitle
+WHERE {
+    ?career a ex:CareerPath ;
+            ex:hasTitle ?careerTitle ;
+            ex:requiresSkill ?skill .
+
+    FILTER (?careerTitle = "Data Scientist")
+
+    ?skill ex:hasName ?skillName .
+
+    ?course ex:developsSkill ?skill ;
+            ex:hasTitle ?courseTitle .
+}
+ORDER BY ?courseTitle ?skillName
+
+
+############################################################
+# TASK 3 - VERSION A
+# Student already has Python Programming (ex:S02).
+# Find courses covering the remaining required skills.
+# Rank courses by the number of missing skills covered.
+############################################################
+
+SELECT ?course ?courseTitle
+       (COUNT(DISTINCT ?skill) AS ?nbMissingSkillsCovered)
+       (GROUP_CONCAT(
+           DISTINCT ?skillName;
+           separator=", "
+       ) AS ?missingSkillsCovered)
+WHERE {
+    ?career a ex:CareerPath ;
+            ex:hasTitle "Data Scientist" ;
+            ex:requiresSkill ?skill .
+
+    FILTER (?skill NOT IN (ex:S02))
+
+    ?skill ex:hasName ?skillName .
+
+    ?course ex:developsSkill ?skill ;
+            ex:hasTitle ?courseTitle .
+}
+GROUP BY ?course ?courseTitle
+ORDER BY DESC(?nbMissingSkillsCovered) ?courseTitle
+
+
+############################################################
+# TASK 3 - VERSION B
+# Model the student in RDF and find courses that cover
+# skills the student does not already have.
+#
+# Required RDF data for Academic_KG.ttl:
+#
+# ex:Student1 a ex:Student ;
+#     ex:hasName "Student 1" ;
+#     ex:hasSkill ex:S02 ;
+#     ex:careerObjective ex:DataScientist .
+############################################################
+
+SELECT ?course ?courseTitle
+       (COUNT(DISTINCT ?skill) AS ?nbMissingSkillsCovered)
+       (GROUP_CONCAT(
+           DISTINCT ?skillName;
+           separator=", "
+       ) AS ?missingSkillsCovered)
+WHERE {
+    ex:Student1 ex:careerObjective ?career .
+
+    ?career ex:requiresSkill ?skill .
+
+    FILTER NOT EXISTS {
+        ex:Student1 ex:hasSkill ?skill .
+    }
+
+    ?skill ex:hasName ?skillName .
+
+    ?course ex:developsSkill ?skill ;
+            ex:hasTitle ?courseTitle .
+}
+GROUP BY ?course ?courseTitle
+ORDER BY DESC(?nbMissingSkillsCovered) ?courseTitle
