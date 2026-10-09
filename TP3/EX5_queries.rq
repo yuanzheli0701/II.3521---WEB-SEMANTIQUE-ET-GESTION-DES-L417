@@ -1,0 +1,69 @@
+PREFIX ex: <http://example.org/academic/>
+
+# Query 1
+SELECT ?course
+WHERE {
+    ?course a ex:Course .
+}
+
+
+# Query 2
+SELECT ?course ?title ?credits
+WHERE {
+    ?course a ex:Course ;
+            ex:hasTitle ?title ;
+            ex:hasCreditValue ?credits .
+}
+
+
+# Query 3
+SELECT ?course
+WHERE {
+    ?professor a ex:Professor ;
+               ex:hasName "Anna Mueller" .
+    ?course a ex:Course ;
+            ex:isTaughtBy ?professor .
+}
+
+
+# Query 4
+SELECT ?skill
+WHERE {
+    ex:CS301 ex:developsSkill ?skill .
+}
+
+
+# Query 5
+SELECT ?prerequisite
+WHERE {
+    ex:CS401 ex:hasPrerequisite ?prerequisite .
+}
+
+
+# Query 6 
+SELECT (COUNT(?course) AS ?count)
+WHERE {
+    ?course a ex:Course .
+}
+
+
+# Query 7
+SELECT ?course ?skill
+WHERE {
+    ?course a ex:Course ;
+            ex:developsSkill ?skill .
+}
+ORDER BY ?course
+
+
+# Query 8
+SELECT ?course
+WHERE {
+    ?course a ex:Course ;
+            ex:developsSkill ex:S02 .
+}
+
+
+# Final question
+# Course -> developsSkill -> Python Programming?
+# Answer: ?course ex:developsSkill ex:S02 .
