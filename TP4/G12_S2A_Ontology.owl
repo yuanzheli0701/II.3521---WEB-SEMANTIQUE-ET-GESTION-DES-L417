@@ -1,0 +1,254 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/jithesh/ontologies/2026/9/untitled-ontology-8/"
+     xml:base="http://www.semanticweb.org/jithesh/ontologies/2026/9/untitled-ontology-8/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://example.org/s2a/ontology"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://example.org/s2a/ontology#completedCourse -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/s2a/ontology#completedCourse">
+        <rdfs:domain rdf:resource="http://example.org/s2a/ontology#Student"/>
+        <rdfs:range rdf:resource="http://example.org/s2a/ontology#Course"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/s2a/ontology#developsSkill -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/s2a/ontology#developsSkill">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://example.org/s2a/ontology#Course"/>
+        <rdfs:range rdf:resource="http://example.org/s2a/ontology#Skill"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/s2a/ontology#enrolledInProgram -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/s2a/ontology#enrolledInProgram">
+        <rdfs:domain rdf:resource="http://example.org/s2a/ontology#Student"/>
+        <rdfs:range rdf:resource="http://example.org/s2a/ontology#AcademicProgram"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/s2a/ontology#hasPrerequisite -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/s2a/ontology#hasPrerequisite">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://example.org/s2a/ontology#Course"/>
+        <rdfs:range rdf:resource="http://example.org/s2a/ontology#Course"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/s2a/ontology#isPartOfProgram -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/s2a/ontology#isPartOfProgram">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://example.org/s2a/ontology#Course"/>
+        <rdfs:range rdf:resource="http://example.org/s2a/ontology#AcademicProgram"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/s2a/ontology#isTaughtBy -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/s2a/ontology#isTaughtBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://example.org/s2a/ontology#Course"/>
+        <rdfs:range rdf:resource="http://example.org/s2a/ontology#Professor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/s2a/ontology#offeredInSemester -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/s2a/ontology#offeredInSemester">
+        <rdfs:domain rdf:resource="http://example.org/s2a/ontology#Course"/>
+        <rdfs:range rdf:resource="http://example.org/s2a/ontology#Semester"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://example.org/s2a/ontology#requiresSkill -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/s2a/ontology#requiresSkill">
+        <rdfs:domain rdf:resource="http://example.org/s2a/ontology#CareerPath"/>
+        <rdfs:range rdf:resource="http://example.org/s2a/ontology#Skill"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://example.org/s2a/ontology#hasCourseCode -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/s2a/ontology#hasCourseCode">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://example.org/s2a/ontology#Course"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/s2a/ontology#hasCourseTitle -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/s2a/ontology#hasCourseTitle">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://example.org/s2a/ontology#Course"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/s2a/ontology#hasCreditValue -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/s2a/ontology#hasCreditValue">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://example.org/s2a/ontology#Course"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/s2a/ontology#hasPersonName -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/s2a/ontology#hasPersonName">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://example.org/s2a/ontology#Person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/s2a/ontology#hasProgramName -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/s2a/ontology#hasProgramName">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://example.org/s2a/ontology#AcademicProgram"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://example.org/s2a/ontology#hasStudentID -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/s2a/ontology#hasStudentID">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://example.org/s2a/ontology#Student"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://example.org/s2a/ontology#AcademicEntity -->
+
+    <owl:Class rdf:about="http://example.org/s2a/ontology#AcademicEntity">
+        <rdfs:subClassOf rdf:resource="http://example.org/s2a/ontology#Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/s2a/ontology#AcademicProgram -->
+
+    <owl:Class rdf:about="http://example.org/s2a/ontology#AcademicProgram">
+        <rdfs:subClassOf rdf:resource="http://example.org/s2a/ontology#AcademicEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/s2a/ontology#CareerPath -->
+
+    <owl:Class rdf:about="http://example.org/s2a/ontology#CareerPath">
+        <rdfs:subClassOf rdf:resource="http://example.org/s2a/ontology#AcademicEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/s2a/ontology#Course -->
+
+    <owl:Class rdf:about="http://example.org/s2a/ontology#Course">
+        <rdfs:subClassOf rdf:resource="http://example.org/s2a/ontology#AcademicEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/s2a/ontology#Person -->
+
+    <owl:Class rdf:about="http://example.org/s2a/ontology#Person"/>
+    
+
+
+    <!-- http://example.org/s2a/ontology#Professor -->
+
+    <owl:Class rdf:about="http://example.org/s2a/ontology#Professor">
+        <rdfs:subClassOf rdf:resource="http://example.org/s2a/ontology#Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/s2a/ontology#Semester -->
+
+    <owl:Class rdf:about="http://example.org/s2a/ontology#Semester">
+        <rdfs:subClassOf rdf:resource="http://example.org/s2a/ontology#AcademicEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/s2a/ontology#Skill -->
+
+    <owl:Class rdf:about="http://example.org/s2a/ontology#Skill">
+        <rdfs:subClassOf rdf:resource="http://example.org/s2a/ontology#AcademicEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://example.org/s2a/ontology#Student -->
+
+    <owl:Class rdf:about="http://example.org/s2a/ontology#Student">
+        <rdfs:subClassOf rdf:resource="http://example.org/s2a/ontology#Person"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+
